@@ -20,7 +20,7 @@ export class CategoryService {
     const repo = AppDataSource.getRepository(Category);
 
     if (await repo.findOne({ where: { name } })) {
-      return new Error("Category already exists.");
+      return new Error("Category already exist.");
     }
 
     const category = repo.create({
@@ -45,7 +45,7 @@ export class CategoryService {
     const repo = AppDataSource.getRepository(Category);
 
     if (!(await repo.findOne({ where: { id } }))) {
-      return new Error("Category does not exists.");
+      return new Error("Category does not exist.");
     }
 
     await repo.delete(id);
@@ -57,7 +57,7 @@ export class CategoryService {
     const category = await repo.findOne({ where: { id } });
 
     if (!category) {
-      return new Error("Category does not exists.");
+      return new Error("Category does not exist.");
     }
 
     category.name = name ? name : category.name;

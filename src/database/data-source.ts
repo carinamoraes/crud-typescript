@@ -1,16 +1,18 @@
 import { DataSource } from "typeorm";
 import { Category } from "../entities/Category";
+import { User } from "../entities/User";
 import { Video } from "../entities/Video";
+import "dotenv/config";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: "localhost",
+  host: process.env.DB_HOST,
   port: 3306,
-  username: "root",
-  password: "12345",
-  database: "db_typescript",
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   migrations: ["src/database/migrations/*.ts"],
-  entities: [Category, Video],
+  entities: [Category, Video, User],
 });
 
 AppDataSource.initialize()

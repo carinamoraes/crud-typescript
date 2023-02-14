@@ -27,7 +27,7 @@ export class VideoService {
     const repoCategory = AppDataSource.getRepository(Category);
 
     if (!(await repoCategory.findOne({ where: { id: category_id } }))) {
-      return new Error("Category does not exists.");
+      return new Error("Category does not exist.");
     }
 
     const video = repo.create({
@@ -56,7 +56,7 @@ export class VideoService {
     const repo = AppDataSource.getRepository(Video);
 
     if (!(await repo.findOne({ where: { id } }))) {
-      return new Error("Video does not exists.");
+      return new Error("Video does not exist.");
     }
 
     await repo.delete(id);
@@ -68,7 +68,7 @@ export class VideoService {
     const video = await repo.findOne({ where: { id } });
 
     if (!video) {
-      return new Error("Video does not exists.");
+      return new Error("Video does not exist.");
     }
 
     video.name = name ? name : video.name;
