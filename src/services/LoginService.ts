@@ -2,6 +2,7 @@ import { User } from "../entities/User";
 import { AppDataSource } from "../database/data-source";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { Request, Response } from "express";
 
 type LoginRequest = {
   email: string;

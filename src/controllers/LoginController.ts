@@ -15,4 +15,8 @@ export class LoginController {
 
     return response.json(result);
   }
+
+  async getProfile(request: Request, response: Response) {
+    return response.json(request.user);
+  }
 }

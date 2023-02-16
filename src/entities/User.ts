@@ -1,5 +1,13 @@
-import { Entity, PrimaryColumn, CreateDateColumn, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryColumn,
+  CreateDateColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Video } from "./Video";
 
 @Entity("users")
 export class User {

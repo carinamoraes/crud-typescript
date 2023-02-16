@@ -3,6 +3,7 @@ import { Category } from "../entities/Category";
 import { User } from "../entities/User";
 import { Video } from "../entities/Video";
 import "dotenv/config";
+import { Playlist } from "../entities/Playlist";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   migrations: ["src/database/migrations/*.ts"],
-  entities: [Category, Video, User],
+  entities: [Category, Video, User, Playlist],
 });
 
 AppDataSource.initialize()
