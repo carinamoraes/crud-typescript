@@ -3,11 +3,10 @@ import {
   PrimaryColumn,
   CreateDateColumn,
   Column,
-  ManyToMany,
-  JoinTable,
+  OneToMany,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Video } from "./Video";
+import { Playlist } from "./Playlist";
 
 @Entity("users")
 export class User {
@@ -22,6 +21,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Playlist, (playlist) => playlist.user)
+  playlist: Playlist[];
 
   @CreateDateColumn()
   created_at: Date;

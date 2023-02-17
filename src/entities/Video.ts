@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Category } from "./Category";
+import { Playlist } from "./Playlist";
 
 @Entity("videos")
 export class Video {
@@ -29,6 +31,9 @@ export class Video {
   @ManyToOne(() => Category) // Tipo do relacionamento, vários vídeos para uma categoria
   @JoinColumn({ name: "category_id" }) // Coluna que estou referenciando na tabela de Videos
   category: Category;
+
+  @OneToMany(() => Playlist, (playlist) => playlist.video)
+  playlist: Playlist[];
 
   @CreateDateColumn()
   created_at: Date;

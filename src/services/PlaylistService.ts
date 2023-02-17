@@ -17,7 +17,7 @@ export class PlaylistService {
     const videoRepo = AppDataSource.getRepository(Video);
 
     if (!(await videoRepo.findOneBy({ id: video_id }))) {
-      return new Error("Video= does not exist.");
+      return new Error("Video does not exist.");
     }
 
     if (await repo.findOne({ where: { user_id, video_id } })) {

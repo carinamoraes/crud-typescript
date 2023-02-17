@@ -18,14 +18,14 @@ export class Playlist {
   @Column()
   user_id: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: "user_id" })
-  user: User;
-
   @Column()
   video_id: string;
 
-  @ManyToOne(() => Video)
+  @ManyToOne(() => User, (user) => user.playlist)
+  @JoinColumn({ name: "user_id" })
+  user: User;
+
+  @ManyToOne(() => Video, (video) => video.playlist)
   @JoinColumn({ name: "video_id" })
   video: Video;
 
